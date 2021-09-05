@@ -37,7 +37,7 @@ public class PruebaCursos {
         cursoED.setHoras(4);
         cursoED.setAsistenciaObligatoria(true);
         
-        cursoED.agregarRubro(01, "Tarea 1", 5, TEvaluacion.TAREA);
+        cursoED.agregarRubro(01, "Tarea 1", 10, TEvaluacion.TAREA);
         cursoED.agregarRubro(02, "Tarea 2", 5, TEvaluacion.TAREA);
         cursoED.agregarRubro(03, "Quiz 1", 2, TEvaluacion.QUIZ);
         cursoED.agregarRubro(04, "Quiz 2", 2, TEvaluacion.QUIZ);
@@ -51,6 +51,17 @@ public class PruebaCursos {
         else{
             System.out.println("El rubro solicitado no se encuentra registrado");
         }
+        System.out.println(cursoED.validarRubros());
+        System.out.println("La suma de rubros tipo quiz es: "+cursoED.sumarRubro(TEvaluacion.TAREA));
+        System.out.println(cursoED.verRubro(TEvaluacion.TAREA));
+        Rubro_Evaluacion rubro2 = cursoED.consultarRubro(TEvaluacion.TAREA, "Tarea 1");
+        if (rubro2 != null){
+            System.out.println("los detalles del rubro encontrado son " + rubro2.toString());
+        }
+        else{
+            System.out.println("El rubro solicitado no se encuentra registrado");
+        }
+        
         
         cursoED.modificarRubro(05, "Quiz 3", 5);
         
