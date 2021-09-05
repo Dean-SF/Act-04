@@ -104,11 +104,11 @@ public class Curso {
         for (Rubro_Evaluacion rubro : evaluaciones) {
             listaRubros += rubro.toString();
         }
-        return "Curso:" + "codigo=" + codigo + ", nombre=" + nombre + 
-               ", creditos=" + creditos + ", horas=" + horas + 
-               ", asistenciaObligatoria=" + asistenciaObligatoria + 
-               ", nota de aprobación " + NOTA_APROBACION + '\n' +
-               "Lista de Rubros " + listaRubros;
+        return "------ Curso ------" + " " +'\n' + '\n' + "Codigo: " + codigo +'\n'+ "Nombre: " + nombre +'\n'+ 
+               "Creditos: " + creditos +'\n'+ "Horas: " + horas + '\n' + 
+               "Asistencia Obligatoria: " + asistenciaObligatoria +'\n' +
+               "Nota de aprobación:  " + NOTA_APROBACION + '\n' + " " +'\n'+
+               "------ Lista de Rubros ------  " + " " +'\n'+ '\n' + listaRubros;
     }
     
     public boolean agregarRubro( int elId, String nombre, double porc, TEvaluacion tipoR){        
@@ -196,17 +196,17 @@ public class Curso {
             Rubro_Evaluacion actual = evaluaciones.get(i);
             total += actual.getPorcentaje();
         }
-        System.out.println(total);
+        
         if (total == 100){
-            texto = "El porcentaje del total de cursos es de 100%.";
+            texto = "El porcentaje del total de rubros es de 100%.";
             //return texto;
         }else if (total>100){
             total = total-100;
-            texto = "El cusro tiene exeso de porcentaje en rubos con mas de "+total+"%";
+            texto = "El curso se excede en rubros por "+total+"%";
             //return texto;
         }else{
             total = 100-total;
-            texto = "El curos tiene poca cantidad de porcentaje en rubos, le falta "+total+"%";
+            texto = "El curso no tiene rubros suficientes, le falta "+total+"%";
             //return texto;
         }
         return texto;
@@ -223,7 +223,7 @@ public class Curso {
     }
     
     public String verRubro(TEvaluacion tipoR){
-        String texto = "Cursos de tipo "+tipoR+"\n";
+        String texto = "Rubro de tipo "+tipoR+"\n";
         for (int i = 0; i<evaluaciones.size(); i++){
             Rubro_Evaluacion actual = evaluaciones.get(i);
             if(tipoR == actual.getTipo())

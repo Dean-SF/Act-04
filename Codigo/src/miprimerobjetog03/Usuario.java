@@ -102,8 +102,8 @@ public class Usuario {
     }  
     @Override   // sobreescritura: nueva version de la operacion
     public String toString() {
-        return  "Usuario{" + "nombre=" + nombre + ", login=" + login + 
-                ", password=" + password + ", edad=" + edad + ", estado " + estado +
+        return  "Usuario{" + "nombre: " + nombre + ", login: " + login + 
+                ", password: " + password + ", edad: " + edad + ", estado " + estado +
                 ", Intentos antes del bloqueo " + maximoIntentos +'}';
     }  
 }

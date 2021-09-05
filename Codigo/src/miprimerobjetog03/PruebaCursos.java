@@ -15,20 +15,6 @@ public class PruebaCursos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("Hola Mundo soy nuevo en Java");
-        System.out.println("Me llamo Ericka");
-        
-        int cantidad = 0;
-        boolean seguir = false;
-        double precio = 0;
-
-        String nombre = null;
-        Curso miCurso = null;   // declaración de una instancia, variable de tipo Curso
-        miCurso = new Curso("Programacion Orientada a Objetos", "IC2101", 3);   //  instanciación del objeto
-        System.out.println(Curso.getNOTA_APROBACION());        
-        System.out.println(miCurso.getCodigo() + "-" + miCurso.getNombre() + "-" + miCurso.getCreditos());
-        
-        
         
         Curso cursoED = new Curso();   // declaracion e instanciacion del objeto Curso
         cursoED.setCodigo("IC2001");
@@ -43,31 +29,18 @@ public class PruebaCursos {
         cursoED.agregarRubro(04, "Quiz 2", 2, TEvaluacion.QUIZ);
         cursoED.agregarRubro(05, "Quiz 3", 2, TEvaluacion.QUIZ);
         System.out.println(cursoED);
-        
-        Rubro_Evaluacion rubro = cursoED.consultarRubro(05, "Quiz 2");
-        if (rubro != null){
-            System.out.println("los detalles del rubro encontrado son " + rubro.toString());
-        }
-        else{
-            System.out.println("El rubro solicitado no se encuentra registrado");
-        }
+        System.out.println("------ Prueba de los metodos de ACT04 ------"+'\n'+" ");
         System.out.println(cursoED.validarRubros());
         System.out.println("La suma de rubros tipo quiz es: "+cursoED.sumarRubro(TEvaluacion.TAREA));
         System.out.println(cursoED.verRubro(TEvaluacion.TAREA));
+        System.out.println("Se consulta el siguiente rubro: "+'\n'+" ");
         Rubro_Evaluacion rubro2 = cursoED.consultarRubro(TEvaluacion.TAREA, "Tarea 1");
         if (rubro2 != null){
-            System.out.println("los detalles del rubro encontrado son " + rubro2.toString());
+            System.out.println("Los detalles del rubro encontrado son " + rubro2.toString());
         }
         else{
             System.out.println("El rubro solicitado no se encuentra registrado");
         }
-        
-        
-        cursoED.modificarRubro(05, "Quiz 3", 5);
-        
-        cursoED.eliminarRubro(03, "Quiz 1");
-        
-        System.out.println(cursoED);
         
         
     }

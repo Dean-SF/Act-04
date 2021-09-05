@@ -59,8 +59,8 @@ public class Rubro_Evaluacion {
 
     @Override
     public String toString() {
-        return "Rubro_Evaluacion:" + "num=" + num + ", nombre=" + nombre + 
-               ", porcentaje=" + porcentaje + ", tipo=" + tipo + '\n';
+        return "Rubro_Evaluacion: " + "num: " + num + ", nombre: " + nombre + 
+               ", porcentaje: " + porcentaje + ", tipo: " + tipo +'\n';
     }
     
     
