@@ -33,7 +33,7 @@ public class PruebaCursos {
         System.out.println(cursoED.validarRubros());
         System.out.println("La suma de rubros tipo quiz es: "+cursoED.sumarRubro(TEvaluacion.TAREA));
         System.out.println(cursoED.verRubro(TEvaluacion.TAREA));
-        System.out.println("Se consulta el siguiente rubro: "+'\n'+" ");
+        System.out.println("Se consulta el siguiente rubro: Tarea 1, tipo TEvaluacion.TAREA \n");
         Rubro_Evaluacion rubro2 = cursoED.consultarRubro(TEvaluacion.TAREA, "Tarea 1");
         if (rubro2 != null){
             System.out.println("Los detalles del rubro encontrado son " + rubro2.toString());

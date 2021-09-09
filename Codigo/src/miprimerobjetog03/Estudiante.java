@@ -80,9 +80,9 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return  "Estudiante:" + "carne=" + carne + ", nombre=" + nombre + 
+        return  "\nEstudiante:" + "carne=" + carne + ", nombre=" + nombre + 
                 ", correo=" + correo + ", celular=" + celular + 
-                ", promedio=" + promedio + ", estado=" + estado + '\n';
+                ", promedio=" + promedio + ", estado=" + estado;
     }
     
     

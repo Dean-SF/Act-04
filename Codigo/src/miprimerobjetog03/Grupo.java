@@ -2,9 +2,7 @@ package miprimerobjetog03;
 
 
 import java.util.ArrayList;
-import miprimerobjetog03.Curso;
-import miprimerobjetog03.Estudiante;
-import miprimerobjetog03.Profesor;
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -24,8 +22,8 @@ public class Grupo {
     private String sede;
     private Profesor elProfesor;    // declaracion que representa la asociacion con Profesor
     private Curso elCurso;          // declaracion que representa la asociacion con Curso
-    private ArrayList<Estudiante> estudiantes = new ArrayList();
-    private ArrayList<Calificacion> resultados = new ArrayList();
+    private ArrayList<Estudiante> estudiantes = new ArrayList<Estudiante>();
+    private ArrayList<Calificacion> resultados = new ArrayList<Calificacion>();
     
     
 
@@ -107,8 +105,8 @@ public class Grupo {
     public String toString() {
         return "Grupo:" + "numero=" + numero + ", horario=" + horario + 
                 ", cupo=" + cupo + ", aula=" + aula + ", sede=" + sede + 
-                ", elProfesor=" + elProfesor + ", elCurso=" + elCurso + 
-                ", estudiantes=" + estudiantes + '\n';
+                ", elProfesor=" + elProfesor + ", elCurso=\n" + elCurso + 
+                "estudiantes=\n" + estudiantes + '\n';
     }
     
     public boolean agregarEstudiante(Estudiante unEstudiante){
@@ -123,7 +121,7 @@ public class Grupo {
         return true;
     }
        
-    public Estudiante consultar(int carne){
+    public Estudiante consultarEstudiante(int carne){
         for (Estudiante actual : estudiantes) {
             if (actual.getCarne() == carne){
                 return actual;
@@ -150,6 +148,44 @@ public class Grupo {
             }            
         }
         return false;
+    }
+
+    /*
+    Metodo del punto 5 agregarEvaluacion:
+    Agrega a la lista de resultados una evaluacion con parametros especificos.
+    */
+    public boolean agregarEvaluacion(int carne, String nombreRubro, TEvaluacion tipo, double nota) {
+        Estudiante estudiante = consultarEstudiante(carne);                     // Se obtienen objetos ya creados
+        Rubro_Evaluacion rubro = elCurso.consultarRubro(tipo, nombreRubro);     // para el objeto Calificacion
+        if(estudiante == null || rubro == null || nota > 100 || nota < 0 ){     // Se revisa si estos objetos se
+            return false;                                                       // encontraron o no existe alguno
+        }
+        for(Calificacion actual : resultados) {
+            if(actual.getUnEstudiante() == estudiante && actual.getUnaEvaluacion() == rubro) {  // Se revisa que no
+                return false;                                                           // exista un duplicado en las 
+            }                                                                           // calificaciones
+        }
+        Calificacion calificacion = new Calificacion(rubro, estudiante, nota);  // Se crea la calificacion
+        this.resultados.add(calificacion);                                      // se agrega a la lista
+        return true;
+    }
+
+    /*
+    Metodo del punto 6 obtenerPromedio:
+    Obtiene el promedio actual del estudiante
+    */
+    public double obtenerPromedio(int carne) {
+        double resultado = 0;                   // variable para ir guardando el promedio
+        double porcentaje;                      // variables donde se almacenaran temporalmente
+        double nota;                            // numeros para obtener el promedio
+        for (Calificacion actual : resultados) {
+            if (actual.getUnEstudiante().getCarne() == carne){      // se recorre la lista de resultados en busca
+                porcentaje = (actual.getUnaEvaluacion().getPorcentaje());   // de todas las evaluaciones con el carne
+                nota = actual.getNota() / 100;                              // de la persona solicitada
+                resultado += (porcentaje * nota);                           // luego se obtiene el procentaje que
+            }                                                               // vale el rubro y la nota que obtuvo
+        }                                                                   // se multiplican y se suman los otros
+        return resultado;                                                   // para obtener el promedio y retornarlo
     }
     
 }

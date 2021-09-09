@@ -24,7 +24,7 @@ public class Curso {
     // static es un modificador de acceso que define un atributo global
     // final es un modificador de acceso que define un atributo constante
     
-    private ArrayList<Rubro_Evaluacion> evaluaciones = new ArrayList();  
+    private ArrayList<Rubro_Evaluacion> evaluaciones = new ArrayList<Rubro_Evaluacion>();  
     // el ArrayList representa una colección de objetos y debe declararse e instanciarse.
     
     
