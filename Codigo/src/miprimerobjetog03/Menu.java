@@ -225,7 +225,71 @@ public class Menu {
           input.nextLine();
         }
     }
-
+    
+    public static void agregarRubroCurso(){
+        Scanner input = new Scanner(System.in);
+        String codigo;
+        int id;
+        int porc;
+        String nombre;
+        int tipo;
+        System.out.println("Ingrese el codigo del curso:");
+        codigo = input.nextLine();
+        for(Curso actual : listaCursos ){
+            if(actual.getCodigo().equals(codigo)){
+                System.out.println("Ingrese el numero de rubro:");
+                id = input.nextInt();
+                System.out.println("Ingrese el nombre:");
+                nombre = input.nextLine();
+                System.out.println("Ingrese el porcentaje:");
+                porc = input.nextInt();
+                System.out.println("Ingrese el tipo (QUIZ=0, EXAMEN=1, TAREA=2, PROYECTO=3, INVESTIGACION=4, EXPOSICION=5):");
+                tipo = input.nextInt();
+                TEvaluacion tipoE;
+                if(tipo==0){
+                    tipoE = TEvaluacion.QUIZ;
+                }else if(tipo==1){
+                    tipoE = TEvaluacion.EXAMEN;
+                }else if(tipo==2){
+                    tipoE = TEvaluacion.TAREA;
+                }else if(tipo==3){
+                    tipoE = TEvaluacion.PROYECTO;
+                }else if(tipo==4){
+                    tipoE = TEvaluacion.INVESTIGACION;
+                }else{
+                    tipoE = TEvaluacion.EXPOSICION;
+                }
+                actual.agregarRubro(id, nombre, porc, tipoE);
+                System.out.println("Se agrego el nuevo rubro");
+                return;
+            }
+        }
+        System.out.println("El curso no existe");
+    }
+    
+    public static void agregarCalificacionGrupo(){
+       
+    }
+    
+    public static void consultarPromediosEstudiantes(){
+        Scanner input = new Scanner(System.in);
+        String codigo;
+        int numero;
+        int carnet;
+        System.out.println("Ingrese el numero del grupo:");
+        numero = input.nextInt();
+        System.out.println("Ingrese el codigo del curso:");
+        codigo = input.nextLine();
+        for(Grupo actual : listaGrupos){
+            if(actual.getNumero() == numero && actual.getElCurso().getCodigo().equals(codigo)){
+                System.out.println("Digite el carnet del estudiante:");
+                carnet = input.nextInt();
+                System.out.println(actual.consultarEstudiante(carnet));
+                return;
+            }
+        }
+        System.out.println("NO se encontro ningun dato");
+    }
     public static void main(String[] args) {
         Scanner opcion = new Scanner(System.in);
         int number;
@@ -263,13 +327,13 @@ public class Menu {
                 agregarEstudiante();
                 break;
               case 6:
-                
+                agregarRubroCurso();
                 break;
               case 7:
-                
+                agregarCalificacionGrupo();
                 break;
               case 8:
-                
+                consultarPromediosEstudiantes();
                 break;
               case 9:
                 consultarGrupo();
