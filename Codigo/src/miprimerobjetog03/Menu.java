@@ -268,7 +268,45 @@ public class Menu {
     }
     
     public static void agregarCalificacionGrupo(){
-       
+       Scanner input = new Scanner(System.in);
+       String codigo;
+       int numero;
+       int carnet;
+       double nota;
+       int tipo;
+       String nombre;
+       System.out.println("Ingrese el numero del grupo:");
+       numero = input.nextInt();
+        for(Grupo actual : listaGrupos){
+            if(actual.getNumero() == numero){
+                System.out.println("Ingrese el numero de carnet:");
+                carnet = input.nextInt();
+                System.out.println("Ingrese el nombre del rubro:");
+                nombre = input.nextLine();
+                System.out.println("Ingrese la nota:");
+                nota = input.nextInt();
+                System.out.println("Ingrese el tipo (QUIZ=0, EXAMEN=1, TAREA=2, PROYECTO=3, INVESTIGACION=4, EXPOSICION=5):");
+                tipo = input.nextInt();
+                TEvaluacion tipoE;
+                if(tipo==0){
+                    tipoE = TEvaluacion.QUIZ;
+                }else if(tipo==1){
+                    tipoE = TEvaluacion.EXAMEN;
+                }else if(tipo==2){
+                    tipoE = TEvaluacion.TAREA;
+                }else if(tipo==3){
+                    tipoE = TEvaluacion.PROYECTO;
+                }else if(tipo==4){
+                    tipoE = TEvaluacion.INVESTIGACION;
+                }else{
+                    tipoE = TEvaluacion.EXPOSICION;
+                }
+                actual.agregarEvaluacion(carnet, nombre, tipoE, nota);
+                System.out.println("Se agrego la calificacion.");
+                return;
+            }
+        }
+        System.out.println("El grupo no existe.");
     }
     
     public static void consultarPromediosEstudiantes(){
