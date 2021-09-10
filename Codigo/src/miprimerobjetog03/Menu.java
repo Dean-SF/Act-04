@@ -280,10 +280,12 @@ public class Menu {
        double nota;
        int tipo;
        String nombre;
+       System.out.println("Ingrese el codigo de curso:");
+       codigo = input.nextLine();
        System.out.println("Ingrese el numero del grupo:");
        numero = input.nextInt();
         for(Grupo actual : listaGrupos){
-            if(actual.getNumero() == numero){
+            if(actual.getNumero() == numero && actual.getElCurso().getCodigo().equals(codigo)){
                 System.out.println("Ingrese el nombre del rubro:");
                 input.nextLine();
                 nombre = input.nextLine();
@@ -312,7 +314,7 @@ public class Menu {
                 return;
             }
         }
-        System.out.println("El grupo no existe.");
+        System.out.println("El grupo de ese curso no existe.");
     }
     
     public static void consultarPromediosEstudiantes(){
@@ -328,7 +330,7 @@ public class Menu {
             if(actual.getNumero() == numero && actual.getElCurso().getCodigo().equals(codigo)){
                 System.out.println("Digite el carnet del estudiante:");
                 carnet = input.nextInt();
-                System.out.println(actual.consultarEstudiante(carnet));
+                System.out.println(actual.desglosePromedio(carnet));
                 return;
             }
         }
