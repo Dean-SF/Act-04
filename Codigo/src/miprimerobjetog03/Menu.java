@@ -202,7 +202,12 @@ public class Menu {
                 grupo = actual;
             }
         }
-
+        if (grupo == null) {
+          System.out.println("El grupo no existe, vuelvalo a intentar...");
+          input.nextLine();
+          input.nextLine();
+          return;
+        }
         System.out.println("Ingrese el carne de un estudiante");
         int carne = input.nextInt();
         for(Estudiante actual : listaEstudiantes) {
