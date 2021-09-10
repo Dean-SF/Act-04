@@ -1,14 +1,107 @@
 package miprimerobjetog03;
+import java.util.Scanner;
+import miprimerobjetog03.Grupo;
+public class Menu {
+    static Profesor elProfe = new Profesor();
+    static Scanner input = new Scanner(System.in);
+    static Grupo elGrupo = new Grupo();
 
+    public static void registrarProfe(){
+        System.out.print("Ingrese ID del profesor: ");
+        int unID = input.nextInt();
+        elProfe.setId(unID);
+        System.out.print("Ingrese nombre del profesor: ");
+        String nombre = input.next();
+        elProfe.setNombre(nombre);
+        System.out.print("Ingrese especialidad del profesor: ");
+        String especialidad = input.next();
+        elProfe.setEspecialidad(especialidad);
+    }
+    public static void crearEstudiante(){
+        Estudiante elEstudiante = new Estudiante();
+        System.out.print("Ingrese nombre del estudiante: ");
+        String nombre = input.next();
+        elEstudiante.setNombre(nombre);
+        System.out.print("Ingrese carné del estudiante: ");
+        int carnet = input.nextInt();
+        elEstudiante.setCarne(carnet);
+        System.out.print("Ingrese número del estudiante: ");
+        String numero = input.next();
+        elEstudiante.setCelular(numero);
 
-/**
- * 
- * @author Deyan Sanabria Fallas
- */
+    }
+    public static void crearCurso(){
+        Curso elCurso = new Curso();
+        System.out.print("Ingrese nombre del curso: ");
+        String nombre = input.next();
+        elCurso.setNombre(nombre);
+        System.out.print("Ingrese codigo del curso: ");
+        String codigo = input.next();
+        elCurso.setCodigo(codigo);
+        System.out.print("Ingrese creditos del curso: ");
+        int creditos = input.nextInt();
+        elCurso.setCreditos(creditos);
+        System.out.print("Ingrese horas del curso: ");
+        int horas = input.nextInt();
+        elCurso.setHoras(horas);
+    }
+    public static void crearGrupo(){
+        
+        System.out.print("Ingrese número del curso: ");
+        int numero = input.nextInt();
+        elGrupo.setNumero(numero);
+        System.out.print("Ingrese cupo del curso: ");
+        int cupo = input.nextInt();
+        elGrupo.setCupo(cupo);
+        System.out.print("Ingrese ID del profesor del curso: ");
+        String id = input.next();
+        System.out.print("Ingrese nombre del profesor del curso: ");
+        String nombreProfesor = input.next();
+        
+        /*elGrupo.setElProfesor(nombreProfesor);
+        elGrupo.setElProfesor(profesor);
+        System.out.print("Ingrese curso del curso: ");
+        String profesor = input.next();
+        elGrupo.setElCurso(profesor);*/
 
-public class PruebaGrupo {
+    }
+    public static void registrarEstudiante(){
+
+    }
+    public static void crearEvaluacion(){
+        Rubro_Evaluacion laEvaluacion = new Rubro_Evaluacion();
+        System.out.print("Ingrese número de Evaluación: ");
+        int numero = input.nextInt();
+        laEvaluacion.setNum(numero);
+        System.out.print("Ingrese nombre de Evaluación: ");
+        String nombre = input.next();
+        laEvaluacion.setNombre(nombre);
+        System.out.print("Ingrese porcentaje de Evaluación: ");
+        double porcentaje = input.nextInt();
+        laEvaluacion.setPorcentaje(porcentaje);
+        System.out.print("Ingrese tipo de Evaluación: ");
+        String tipo = input.next();
+        //laEvaluacion.setTipo(tipo);
+
+    }
+    public static void registrarCalificacion(){
+        //Rubro_Evaluacion unaEvaluacion, Estudiante unEstudiante, double nota
+        System.out.print("Ingrese evaluación: ");
+        String evaluacion = input.next();
+        System.out.print("Ingrese estudiante: ");
+        String estudiante = input.next();
+        System.out.print("Ingrese nota: ");
+        double nota = input.nextInt();
+        //Calificacion laCalificacion = new Calificacion(evaluacion,estudiante,nota);
+    }
+    public static double consultarPromedios(int carnet){
+        return elGrupo.obtenerPromedio(carnet);
+    }
+    public static void desglozarPromedios(int carnet){
+        System.out.println(elGrupo.desglosePromedio(2021052762));
+    }
     public static void main(String[] args) {
-        // Estudiantes:
+        //Menu Principal
         Estudiante deyanSanabria = new Estudiante();
         deyanSanabria.setNombre("Deyan Sanabria Fallas");
         deyanSanabria.setCarne(2021046131);
@@ -126,13 +219,59 @@ public class PruebaGrupo {
 
         System.out.println("Evaluacion de tarea 4 (nota 82) para David Morales Vargas:");
         System.out.println("Se pudo?: " + pooGrupo3.agregarEvaluacion(2021052762, "Tarea 4", TEvaluacion.TAREA, 82));
-
-        System.out.println("\n---------------------- Promedios -----------------------");
-        System.out.println("Promedio actual de Deyan Sanabria: " + pooGrupo3.obtenerPromedio(2021046131));
-        System.out.println("Promedio actual de Esteban Pérez Picado: " + pooGrupo3.obtenerPromedio(2021046572));
-        System.out.println("Promedio actual de David Morales Vargas: " + pooGrupo3.obtenerPromedio(2021052762));
-        System.out.println(pooGrupo3.desglosePromedio(2021046572));
-        System.out.println("\n------------- Pruebas con otro curso de ED -------------");
-        PruebaCursos.main(null);
+        
+       
+        System.out.println("-----Menú Principal-----"+'\n');
+        System.out.println("Opción 1: Crear Profesor"+'\n'+
+                           "Opción 2: Crear Estudiante"+'\n'+
+                           "Opción 3: Crear Curso"+'\n'+
+                           "Opción 4: Crear Grupo"+'\n'+
+                           "Opción 5: Agregar Estudiante a grupo"+'\n' +
+                           "Opción 6: Crear Evaluación"+'\n'+
+                           "Opción 7: Agregar Calificación"+'\n'+
+                           "Opción 8: Consultar Promedios de estudiantes"+'\n'+
+                           "Opción 9: Consultar Desglose de Notas"+'\n'+
+                           "Opcion 0: Cancelar"+'\n');
+        System.out.print("Escoga una opción: ");
+        int number = input.nextInt();
+        
+        
+        
+        switch(number) {
+            case 1:
+              registrarProfe();
+              break;
+            case 2:
+              crearEstudiante();
+              break;
+            case 3:
+              crearCurso();
+              break;
+            case 4:
+              crearGrupo();
+              break;
+            case 5:
+              registrarEstudiante();
+              break;
+            case 6:
+              crearEvaluacion();
+              break;
+            case 7:
+              registrarCalificacion();
+              break;
+            case 8:
+              System.out.print("Ingrese el carné a consultar: ");
+              int carnet = input.nextInt();
+              consultarPromedios(carnet);
+              break;
+            case 9:
+              System.out.print("Ingrese el carné a consultar: ");
+              int carne = input.nextInt();
+              desglozarPromedios(carne);
+              break;
+            case 0:
+              // code block
+              break;
+          }
     }
 }

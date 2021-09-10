@@ -1,6 +1,7 @@
 package miprimerobjetog03;
 
 
+import java.lang.ProcessHandle.Info;
 import java.util.ArrayList;
 
 
@@ -187,5 +188,31 @@ public class Grupo {
         }                                                                   // se multiplican y se suman los otros
         return resultado;                                                   // para obtener el promedio y retornarlo
     }
-    
+    /*
+    Metodo #7 Desglosar promedio
+    Obtiene el desglose completo de un estudiante
+    */
+    public String desglosePromedio(int carnet){
+        String desglose = "";                   //variables donde se guardaran los datos de notas y evaluaciones
+        String evaluaciones = "";
+        double promedioFinal = 0;
+        double porcentaje;
+        double nota;
+        for (Calificacion actual : resultados) {
+            if (actual.getUnEstudiante().getCarne() == carnet){      //Recorre la lista de resultados buscando coincidencias con el carné
+                String nombre = (actual.getUnEstudiante().getNombre());
+                int carne = actual.getUnEstudiante().getCarne();
+                porcentaje = actual.getUnaEvaluacion().getPorcentaje();
+                nota = actual.getNota() / 100;
+                promedioFinal += porcentaje * nota;
+
+                desglose = "\n-----Promedio desglosado del estudiante consultado-----"+'\n'+ 
+                "Nombre: " + nombre + ", Carné: " + carne + ", Promedio Final: " + promedioFinal;
+                evaluaciones += "Evaluacion: " + actual.getUnaEvaluacion().getNombre() + ", Tipo: " + //crea el desglose de evaluaciones del estudiante
+                actual.getUnaEvaluacion().getTipo() + ", Porcentaje: " + actual.getUnaEvaluacion().getPorcentaje() + 
+                ", Nota Obtenida: " + actual.getNota() + ", Porcentaje obtenido: " + (actual.getUnaEvaluacion().getPorcentaje() * actual.getNota()) / 100 +'\n';             
+            }   
+        }
+        return desglose + '\n' + evaluaciones ;
+    }
 }

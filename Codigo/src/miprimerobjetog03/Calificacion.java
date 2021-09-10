@@ -38,9 +38,9 @@ public class Calificacion {
 
     @Override
     public String toString() {
-        return "Calificacion{" + "unaEvaluacion=" + unaEvaluacion + 
-                ", unEstudiante=" + unEstudiante + 
-                ", nota=" + nota + '}';
+        return "Calificacion{" + "unaEvaluacion: " + unaEvaluacion + 
+                ", unEstudiante: " + unEstudiante + 
+                ", nota: " + nota + '}';
     }
     
     
