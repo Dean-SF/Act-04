@@ -279,10 +279,11 @@ public class Menu {
        numero = input.nextInt();
         for(Grupo actual : listaGrupos){
             if(actual.getNumero() == numero){
+                System.out.println("Ingrese el nombre del rubro:");
+                input.nextLine();
+                nombre = input.nextLine();
                 System.out.println("Ingrese el numero de carnet:");
                 carnet = input.nextInt();
-                System.out.println("Ingrese el nombre del rubro:");
-                nombre = input.nextLine();
                 System.out.println("Ingrese la nota:");
                 nota = input.nextInt();
                 System.out.println("Ingrese el tipo (QUIZ=0, EXAMEN=1, TAREA=2, PROYECTO=3, INVESTIGACION=4, EXPOSICION=5):");
@@ -314,10 +315,10 @@ public class Menu {
         String codigo;
         int numero;
         int carnet;
-        System.out.println("Ingrese el numero del grupo:");
-        numero = input.nextInt();
         System.out.println("Ingrese el codigo del curso:");
         codigo = input.nextLine();
+        System.out.println("Ingrese el numero del grupo:");
+        numero = input.nextInt();
         for(Grupo actual : listaGrupos){
             if(actual.getNumero() == numero && actual.getElCurso().getCodigo().equals(codigo)){
                 System.out.println("Digite el carnet del estudiante:");
