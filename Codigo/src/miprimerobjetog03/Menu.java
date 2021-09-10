@@ -242,10 +242,10 @@ public class Menu {
         codigo = input.nextLine();
         for(Curso actual : listaCursos ){
             if(actual.getCodigo().equals(codigo)){
-                System.out.println("Ingrese el numero de rubro:");
-                id = input.nextInt();
                 System.out.println("Ingrese el nombre:");
                 nombre = input.nextLine();
+                System.out.println("Ingrese el numero de rubro:");
+                id = input.nextInt();
                 System.out.println("Ingrese el porcentaje:");
                 porc = input.nextInt();
                 System.out.println("Ingrese el tipo (QUIZ=0, EXAMEN=1, TAREA=2, PROYECTO=3, INVESTIGACION=4, EXPOSICION=5):");
